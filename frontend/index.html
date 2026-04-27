@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Interview Pro - AI Simulator</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed": "#001f24",
+                    "primary-fixed-dim": "#00daf3",
+                    "on-primary-container": "#00626e",
+                    "inverse-on-surface": "#283044",
+                    "on-secondary-fixed": "#111c2d",
+                    "on-tertiary-container": "#4344d1",
+                    "surface-variant": "#2d3449",
+                    "error-container": "#93000a",
+                    "surface-container-highest": "#2d3449",
+                    "tertiary-container": "#ccccff",
+                    "primary-fixed": "#9cf0ff",
+                    "tertiary-fixed-dim": "#c0c1ff",
+                    "on-tertiary-fixed-variant": "#2f2ebe",
+                    "on-secondary": "#263143",
+                    "on-surface": "#dae2fd",
+                    "on-primary": "#00363d",
+                    "tertiary-fixed": "#e1e0ff",
+                    "secondary": "#bcc7de",
+                    "inverse-surface": "#dae2fd",
+                    "secondary-container": "#3e495d",
+                    "primary": "#c3f5ff",
+                    "on-secondary-container": "#aeb9d0",
+                    "on-tertiary-fixed": "#07006c",
+                    "background": "#0b1326",
+                    "surface-container-lowest": "#060e20",
+                    "secondary-fixed": "#d8e3fb",
+                    "on-error": "#690005",
+                    "surface-bright": "#31394d",
+                    "surface-dim": "#0b1326",
+                    "on-primary-fixed-variant": "#004f58",
+                    "surface-tint": "#00daf3",
+                    "surface-container": "#171f33",
+                    "outline-variant": "#3b494c",
+                    "on-surface-variant": "#bac9cc",
+                    "tertiary": "#edeaff",
+                    "surface-container-low": "#131b2e",
+                    "on-tertiary": "#1000a9",
+                    "surface-container-high": "#222a3d",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#3c475a",
+                    "outline": "#849396",
+                    "error": "#ffb4ab",
+                    "on-background": "#dae2fd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-xl": ["Inter"],
+                    "body-md": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(45, 52, 73, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .ai-waveform {
+            background: linear-gradient(90deg, #00daf3 0%, #4344d1 100%);
+            mask-image: url("data:image/svg+xml,%3Csvg width='200' height='40' viewBox='0 0 200 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 20c20-10 30 10 50 0s30-10 50 0 30 10 50 0 30-10 50 0' stroke='black' fill='transparent'/%3E%3C/svg%3E");
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24">
+<header class="fixed top-0 w-full z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-md flex justify-between items-center px-6 h-16 shadow-xl shadow-black/40">
+    <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full overflow-hidden border border-primary-fixed-dim/30">
+            <img alt="AI Mentor Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOs_HKySoyGgf_YMs_E2hlvnggTn0VPLIh2FSiPhO0ev965B2wlVxHaapMCwV0va9_EJGC7_Nyv1zOu67QblG74mBINU-JWnoiXRctiZalnU40uyeM50uO83oX4-JkA1qksoUsU_E7PBR0l2doiN9-x43msvyWlRWV7qWOH308TA47MMtsXkMjZ_KkK-8YSA0bKtHtJCoo2u1TqCcn0Mamzhv0SEj24LaxGwIpUOLE8bXNRq4DgocZVZzLCWOMnV1dn4-WKvnnJ_oO"/>
+        </div>
+        <span class="text-cyan-400 font-bold text-xl font-inter tracking-tight">Interview Pro</span>
+    </div>
+    <button class="text-slate-400 hover:text-cyan-300 transition-colors active:scale-95 duration-200">
+        <span class="material-symbols-outlined">settings</span>
+    </button>
+</header>
+
+<main class="pt-24 px-4 max-w-lg mx-auto space-y-6">
+    <div class="flex flex-col items-center justify-center space-y-4 py-4">
+        <div class="relative w-24 h-24">
+            <div class="absolute inset-0 rounded-full bg-primary-fixed-dim/20 animate-pulse"></div>
+            <div class="absolute inset-2 rounded-full border-2 border-primary-fixed-dim/50 flex items-center justify-center">
+                <span class="material-symbols-outlined text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">graphic_eq</span>
+            </div>
+        </div>
+        <div class="text-center">
+            <p class="text-primary-fixed-dim font-headline-md text-sm uppercase tracking-[0.2em] mb-1">AI Mentor Listening</p>
+            <div class="h-1 w-32 bg-surface-variant rounded-full overflow-hidden mx-auto">
+                <div class="h-full w-2/3 bg-primary-fixed-dim ai-waveform"></div>
+            </div>
+        </div>
+    </div>
+
+    <section class="bg-surface-container-high rounded-[16px] p-6 shadow-2xl shadow-black/60 border border-white/5 space-y-6">
+        <div class="space-y-2">
+            <div class="flex justify-between items-end">
+                <span class="text-primary-fixed-dim font-label-md text-[10px] uppercase tracking-widest">Question 1 of 3</span>
+                <span class="text-slate-500 font-label-md text-[10px]">33% COMPLETE</span>
+            </div>
+            <div class="h-1.5 w-full bg-surface-container-lowest rounded-full overflow-hidden">
+                <div class="h-full bg-primary-fixed-dim w-1/3 rounded-full shadow-[0_0_8px_rgba(0,218,243,0.5)]"></div>
+            </div>
+        </div>
+
+        <div class="py-4">
+            <h2 id="questionText" class="text-on-surface font-headline-md text-xl leading-relaxed">
+                "Tell me about a time you handled a difficult situation with a coworker. What was your approach?"
+            </h2>
+        </div>
+
+        <div class="space-y-2">
+            <label class="text-slate-400 font-label-md text-[10px] uppercase tracking-wider block ml-1">Your Response</label>
+            <textarea id="answer" class="w-full h-48 bg-surface-container-lowest border border-white/10 rounded-xl p-4 text-on-surface focus:border-primary-fixed-dim focus:ring-1 focus:ring-primary-fixed-dim transition-all outline-none resize-none font-body-md placeholder:text-slate-600" placeholder="Type your answer here..."></textarea>
+        </div>
+
+        <div class="flex flex-col gap-3">
+            <button id="submitBtn" class="w-full bg-primary-fixed-dim text-on-primary-fixed font-headline-md text-base py-4 rounded-xl shadow-lg shadow-primary-fixed-dim/20 active:scale-[0.98] transition-transform flex items-center justify-center gap-2">
+                Submit Answer
+                <span class="material-symbols-outlined text-sm">send</span>
+            </button>
+            <div class="flex gap-2">
+                <button class="flex-1 border border-white/10 text-slate-400 font-label-md py-3 rounded-lg hover:bg-white/5 transition-colors active:scale-95">
+                    Exit Interview
+                </button>
+                <button class="flex-1 border border-white/10 text-slate-400 font-label-md py-3 rounded-lg hover:bg-white/5 transition-colors active:scale-95">
+                    Start Over
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="glass-panel rounded-2xl p-6 border-dashed border-white/20">
+        <div class="flex items-center gap-4 text-slate-500">
+            <div class="p-3 bg-surface-container-lowest rounded-xl">
+                <span class="material-symbols-outlined">analytics</span>
+            </div>
+            <div>
+                <h3 class="font-headline-md text-sm text-slate-300">Live Insights</h3>
+                <p class="text-xs">Submit your response to see AI feedback on tone, pace, and keywords.</p>
+            </div>
+        </div>
+
+        <div class="mt-6 flex flex-wrap gap-2">
+            <div id="toneChip" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-lowest border border-white/5 text-[10px] font-medium text-slate-400">
+                <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+                TONE: --
+            </div>
+
+            <div id="paceChip" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-lowest border border-white/5 text-[10px] font-medium text-slate-400">
+                <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+                PACE: --
+            </div>
+
+            <div id="confidenceChip" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-lowest border border-white/5 text-[10px] font-medium text-slate-400">
+                <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+                CONFIDENCE: --
+            </div>
+        </div>
+    </section>
+</main>
+
+<nav class="fixed bottom-0 w-full z-50 border-t border-white/10 rounded-t-lg bg-slate-950/90 backdrop-blur-xl flex justify-around items-center h-20 px-4 pb-safe shadow-[0_-4px_20px_rgba(0,0,0,0.5)]">
+    <a class="flex flex-col items-center justify-center text-cyan-400 bg-cyan-400/10 rounded-xl px-3 py-1 active:scale-90 duration-150" href="#">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">exercise</span>
+        <span class="font-inter text-[10px] font-medium uppercase tracking-widest mt-1">Practice</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-slate-500 hover:bg-white/5 transition-all active:scale-90 duration-150" href="#">
+        <span class="material-symbols-outlined">history</span>
+        <span class="font-inter text-[10px] font-medium uppercase tracking-widest mt-1">History</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-slate-500 hover:bg-white/5 transition-all active:scale-90 duration-150" href="#">
+        <span class="material-symbols-outlined">analytics</span>
+        <span class="font-inter text-[10px] font-medium uppercase tracking-widest mt-1">Insights</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-slate-500 hover:bg-white/5 transition-all active:scale-90 duration-150" href="#">
+        <span class="material-symbols-outlined">person</span>
+        <span class="font-inter text-[10px] font-medium uppercase tracking-widest mt-1">Profile</span>
+    </a>
+</nav>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    let questions = [
+        "Tell me about a time you handled a difficult situation with a coworker.",
+        "What are your strengths and weaknesses?",
+        "Why should we hire you?"
+    ];
+
+    let currentQuestion = 0;
+    let answers = [];
+
+    const button = document.getElementById("submitBtn");
+    const questionEl = document.getElementById("questionText");
+    const answerBox = document.getElementById("answer");
+
+    button.addEventListener("click", function () {
+
+        const answer = answerBox.value;
+
+        if (answer.trim() === "") {
+            alert("Please enter your answer!");
+            return;
+        }
+
+        answers.push(answer);
+
+        let score = Math.min(100, answer.length * 2);
+
+        document.getElementById("toneChip").innerHTML =
+        '<span class="w-1.5 h-1.5 rounded-full bg-green-400"></span> TONE: GOOD';
+
+        document.getElementById("paceChip").innerHTML =
+        '<span class="w-1.5 h-1.5 rounded-full bg-yellow-400"></span> PACE: MEDIUM';
+
+        document.getElementById("confidenceChip").innerHTML =
+        '<span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> CONFIDENCE: ' + score + '%';
+
+        currentQuestion++;
+
+        if (currentQuestion < questions.length) {
+            questionEl.innerText = questions[currentQuestion];
+            answerBox.value = "";
+        } else {
+            alert("Interview Completed!");
+        }
+
+    });
+
+});
+</script>
+</body>
+</html>
