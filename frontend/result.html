@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#320047",
+                    "on-primary": "#00363a",
+                    "primary": "#dbfcff",
+                    "tertiary-fixed": "#e9ddff",
+                    "surface-dim": "#131313",
+                    "on-secondary-fixed-variant": "#74009f",
+                    "surface": "#131313",
+                    "outline-variant": "#3b494b",
+                    "primary-fixed": "#7df4ff",
+                    "surface-tint": "#00dbe9",
+                    "primary-container": "#00f0ff",
+                    "on-tertiary": "#3c0090",
+                    "tertiary-container": "#e1d2ff",
+                    "inverse-on-surface": "#313030",
+                    "on-error": "#690005",
+                    "inverse-surface": "#e5e2e1",
+                    "on-background": "#e5e2e1",
+                    "inverse-primary": "#006970",
+                    "primary-fixed-dim": "#00dbe9",
+                    "on-secondary-container": "#fff6fc",
+                    "on-surface-variant": "#b9cacb",
+                    "surface-bright": "#3a3939",
+                    "on-primary-fixed-variant": "#004f54",
+                    "on-tertiary-fixed-variant": "#5700c9",
+                    "secondary-container": "#b600f8",
+                    "surface-container-low": "#1c1b1b",
+                    "tertiary-fixed-dim": "#d1bcff",
+                    "on-surface": "#e5e2e1",
+                    "background": "#131313",
+                    "on-secondary": "#520072",
+                    "error": "#ffb4ab",
+                    "secondary-fixed-dim": "#ebb2ff",
+                    "surface-container": "#201f1f",
+                    "surface-container-lowest": "#0e0e0e",
+                    "tertiary": "#faf3ff",
+                    "error-container": "#93000a",
+                    "on-primary-container": "#006970",
+                    "on-error-container": "#ffdad6",
+                    "surface-variant": "#353534",
+                    "secondary-fixed": "#f8d8ff",
+                    "on-tertiary-container": "#7213ff",
+                    "secondary": "#ebb2ff",
+                    "surface-container-high": "#2a2a2a",
+                    "outline": "#849495",
+                    "surface-container-highest": "#353534",
+                    "on-primary-fixed": "#002022",
+                    "on-tertiary-fixed": "#23005b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "16px",
+                    "gutter-md": "16px",
+                    "base-unit": "4px",
+                    "stack-sm": "8px",
+                    "stack-lg": "32px",
+                    "margin-mobile": "24px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-xl": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .ai-pulse-glow {
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.15);
+        }
+        .progress-ring-circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        .neon-text-glow {
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-6 h-16 bg-black/40 backdrop-blur-xl border-b border-white/15 shadow-[0_0_15px_rgba(0,240,255,0.1)]">
+<div class="flex items-center gap-3">
+<div class="w-2.5 h-2.5 rounded-full bg-cyan-400 ai-pulse-glow animate-pulse"></div>
+<span class="text-xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-violet-500">Interview Pro</span>
+</div>
+<button class="text-slate-400 hover:text-cyan-300 transition-colors active:scale-95 duration-300">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</header>
+<main class="mt-24 px-6 space-y-8 max-w-md mx-auto">
+<!-- Score Visualization -->
+<section class="flex flex-col items-center justify-center py-4">
+<div class="relative w-56 h-56 flex items-center justify-center">
+<!-- SVG Progress Gauge -->
+<svg class="w-full h-full" viewbox="0 0 100 100">
+<circle class="text-white/5" cx="50" cy="50" fill="transparent" r="45" stroke="currentColor" stroke-width="4"></circle>
+<circle class="progress-ring-circle" cx="50" cy="50" fill="transparent" r="45" stroke="url(#cyan-gradient)" stroke-dasharray="283" id="progressCircle" stroke-dashoffset="283" stroke-linecap="round" stroke-width="6"></circle>
+<defs>
+<lineargradient id="cyan-gradient" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#00f0ff"></stop>
+<stop offset="100%" stop-color="#7213ff"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span id="finalScore" class="font-headline-xl text-headline-xl text-cyan-400 neon-text-glow">0</span>
+<span class="font-label-sm text-label-sm text-slate-500 uppercase tracking-widest">Score / 100</span>
+</div>
+<!-- AI Orb Glow Background -->
+<div class="absolute -z-10 w-40 h-40 bg-cyan-500/10 blur-[80px] rounded-full"></div>
+</div>
+<div class="mt-6 text-center">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Great Interview!</h1>
+<p class="font-body-md text-body-md text-slate-400 mt-1"><p id="performanceText"></p></p>
+</div>
+</section>
+<!-- Performance Breakdown (Bento Style) -->
+<section class="space-y-4">
+<h2 class="font-label-sm text-label-sm text-slate-500 uppercase tracking-widest px-1">Performance Breakdown</h2>
+<div class="grid grid-cols-2 gap-4">
+<!-- Tone Card -->
+<div class="glass-card p-4 rounded-3xl flex flex-col justify-between h-40">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm text-slate-400">Tone</span>
+<div class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse"></div>
+</div>
+<div class="space-y-1">
+<p class="font-headline-lg text-[20px] leading-tight text-white">Confident &amp; Professional</p>
+</div>
+</div>
+<!-- Confidence Card -->
+<div class="glass-card p-4 rounded-3xl flex flex-col justify-between h-40">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm text-slate-400">Confidence</span>
+<span id="confidenceScore" class="text-cyan-400 font-bold">0%</span>
+</div>
+<div class="flex items-end gap-1 h-12">
+<div class="w-full bg-cyan-400/20 h-[30%] rounded-t-sm"></div>
+<div class="w-full bg-cyan-400/40 h-[60%] rounded-t-sm"></div>
+<div class="w-full bg-cyan-400/60 h-[45%] rounded-t-sm"></div>
+<div class="w-full bg-cyan-400/80 h-[85%] rounded-t-sm"></div>
+<div class="w-full bg-cyan-400 h-[92%] rounded-t-sm"></div>
+</div>
+</div>
+</div>
+<!-- Keyword Match Card -->
+<div class="glass-card p-5 rounded-3xl space-y-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-cyan-400" style="font-size: 20px;">target</span>
+<span class="font-label-sm text-label-sm text-slate-400 uppercase tracking-widest">Key Performance Traits</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-full border border-cyan-400/30 bg-cyan-400/5 text-cyan-400 font-label-sm text-[11px] uppercase tracking-wider">Leadership</span>
+<span class="px-3 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/5 text-violet-400 font-label-sm text-[11px] uppercase tracking-wider">Conflict Resolution</span>
+<span class="px-3 py-1.5 rounded-full border border-cyan-400/30 bg-cyan-400/5 text-cyan-400 font-label-sm text-[11px] uppercase tracking-wider">Action-Oriented</span>
+<span class="px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-slate-400 font-label-sm text-[11px] uppercase tracking-wider">Strategic Thinker</span>
+</div>
+</div>
+</section>
+<!-- AI Recommendations -->
+<section class="space-y-4">
+<h2 class="font-label-sm text-label-sm text-slate-500 uppercase tracking-widest px-1">AI Recommendations</h2>
+<div class="glass-card rounded-3xl overflow-hidden">
+<div class="p-5 border-b border-white/10 bg-white/[0.02]">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-cyan-400 to-violet-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-weight="fill">psychology</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-white">Advanced Insights</p>
+<p class="font-label-sm text-[11px] text-slate-500">Generated 2m ago</p>
+</div>
+</div>
+</div>
+<div class="p-5 space-y-6">
+<div class="space-y-2">
+<div class="flex items-center gap-2 text-cyan-400">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Strengths</span>
+</div>
+<p class="font-body-md text-body-md text-slate-300">Your explanation of the STAR method during the "Conflict" question was exceptional. You demonstrated clear ownership and measurable results.</p>
+</div>
+<div class="space-y-2">
+<div class="flex items-center gap-2 text-violet-400">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Areas for growth</span>
+</div>
+<p class="font-body-md text-body-md text-slate-300">Try to reduce "filler words" (um, ah) by 20%. Consider pausing for 2 seconds before answering complex technical questions to structure your response.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Controls -->
+<section class="space-y-3 pb-8">
+<button class="w-full py-4 rounded-2xl bg-primary-container text-on-primary-container font-label-md text-label-md flex items-center justify-center gap-2 active:scale-95 transition-transform duration-300">
+<span class="material-symbols-outlined">model_training</span>
+                Practice More
+            </button>
+<div class="grid grid-cols-2 gap-3">
+<button class="py-4 rounded-2xl border border-white/10 bg-white/5 text-slate-300 font-label-md text-label-md flex items-center justify-center gap-2 active:scale-95 transition-transform duration-300">
+<span class="material-symbols-outlined text-sm">history</span>
+                    History
+                </button>
+<button class="py-4 rounded-2xl border border-white/10 bg-white/5 text-slate-300 font-label-md text-label-md flex items-center justify-center gap-2 active:scale-95 transition-transform duration-300">
+<span class="material-symbols-outlined text-sm">share</span>
+                    Share
+                </button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-3 h-20 bg-white/10 backdrop-blur-lg border-t border-white/10 shadow-[0_-5px_20px_rgba(0,240,255,0.05)] rounded-t-3xl">
+<button class="flex flex-col items-center justify-center text-slate-500 opacity-60 hover:bg-white/5 transition-all duration-300 ease-out active:translate-y-[-2px]">
+<span class="material-symbols-outlined">model_training</span>
+<span class="font-inter text-[10px] font-medium tracking-wide">Practice</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 opacity-60 hover:bg-white/5 transition-all duration-300 ease-out active:translate-y-[-2px]">
+<span class="material-symbols-outlined">history</span>
+<span class="font-inter text-[10px] font-medium tracking-wide">History</span>
+</button>
+<button class="flex flex-col items-center justify-center text-cyan-400 drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] hover:bg-white/5 transition-all duration-300 ease-out active:translate-y-[-2px]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">query_stats</span>
+<span class="font-inter text-[10px] font-medium tracking-wide">Insights</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 opacity-60 hover:bg-white/5 transition-all duration-300 ease-out active:translate-y-[-2px]">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-inter text-[10px] font-medium tracking-wide">Profile</span>
+</button>
+</nav>
+ <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    let score = localStorage.getItem("finalScore");
+    if (!score) score = 0;
+
+    // Update text
+    document.getElementById("finalScore").innerText = score;
+    document.getElementById("confidenceScore").innerText = score + "%";
+
+    // ✅ ADD THIS PART HERE 👇
+    let message = "";
+
+    if (score >= 80) {
+        message = "Excellent Performance!";
+    } else if (score >= 50) {
+        message = "Good Try!";
+    } else {
+        message = "Needs Improvement!";
+    }
+
+    document.querySelector("h1").innerText = message;
+    // ✅ END
+
+    let performanceText = "";
+
+if (score >= 80) {
+    performanceText = "You performed better than 90% of applicants.";
+} else if (score >= 50) {
+    performanceText = "You performed better than 65% of applicants.";
+} else {
+    performanceText = "You performed better than 30% of applicants.";
+}
+
+document.getElementById("performanceText").innerText = performanceText;
+
+    // Update circle
+    let circle = document.getElementById("progressCircle");
+    let radius = 45;
+    let circumference = 2 * Math.PI * radius;
+
+    let offset = circumference - (score / 100) * circumference;
+    circle.style.strokeDashoffset = offset;
+
+});
+</script>
+</body></html>

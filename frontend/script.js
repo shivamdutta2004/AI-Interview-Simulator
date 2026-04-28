@@ -42,8 +42,22 @@ document.addEventListener("DOMContentLoaded", function () {
             questionEl.innerText = questions[currentQuestion];
             answerBox.value = "";
         } else {
-            alert("Interview Completed!");
-        }
+
+    let totalScore = 0;
+
+    // Calculate total score
+    answers.forEach(ans => {
+        totalScore += Math.min(100, ans.length * 2);
+    });
+
+    let avgScore = Math.round(totalScore / answers.length);
+
+    // Save result to localStorage
+    localStorage.setItem("finalScore", avgScore);
+
+    // Redirect to result page
+    window.location.href = "./result.html";
+}
 
     });
 

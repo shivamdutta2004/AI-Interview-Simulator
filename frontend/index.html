@@ -235,7 +235,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         answers.push(answer);
 
-        let score = Math.min(100, answer.length * 2);
+        let score = Math.min(100, answer.length * 3 + 20);
 
         document.getElementById("toneChip").innerHTML =
         '<span class="w-1.5 h-1.5 rounded-full bg-green-400"></span> TONE: GOOD';
@@ -263,7 +263,18 @@ if (currentQuestion < questions.length) {
     document.getElementById("progressBar").style.width = progress + "%";
 
 } else {
-    alert("Interview Completed!");
+
+    let totalScore = 0;
+
+    answers.forEach(ans => {
+        totalScore += Math.min(100, ans.length * 2);
+    });
+
+    let avgScore = Math.round(totalScore / answers.length);
+
+    localStorage.setItem("finalScore", avgScore);
+
+    window.location.href = "./result.html";
 }
 
     });
